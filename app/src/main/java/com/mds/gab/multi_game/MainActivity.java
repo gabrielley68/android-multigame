@@ -54,7 +54,12 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         tapFragment.setArguments(bundle);
         fragments.add(tapFragment);
 
-        fragments.add(new IpacGameFragment());
+        bundle = new Bundle();
+        bundle.putString("name", getString(R.string.ipac_game));
+        BeginGameFragment ipacFragment = new BeginGameFragment();
+        ipacFragment.setArguments(bundle);
+        fragments.add(ipacFragment);
+
         fragments.add(new SettingsFragment());
 
         FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
@@ -102,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 } else if (subFragment.getTag() != null && subFragment.getTag().equals(getString(R.string.swipe))) {
                     subFragment.getFragmentManager().popBackStack();
                 } else if (subFragment.getTag() != null && subFragment.getTag().equals(getString(R.string.dragndrop))){
+                    subFragment.getFragmentManager().popBackStack();
+                } else if (subFragment.getTag() != null && subFragment.getTag().equals(getString(R.string.ipac_game))){
                     subFragment.getFragmentManager().popBackStack();
                 }
             }

@@ -10,8 +10,6 @@
     <string name="validate">Valider</string>
     <string name="player_list">Liste des joueurs</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="begin">Commencer</string>
     <string name="fast_tap">Fast Tap</string>
     <string name="swipe">Swipe</string>
@@ -21,5 +19,12 @@
     <string name="score">Score : </string>
     <string name="your_score">Votre score est de</string>
     <string name="menu">Menu</string>
+
+    <string name="ipac_game">Ipac Game</string>
+    <string name="number_try">Il vous reste %d essais</string>
+    <string name="enter_number">Entrez un nombre</string>
+    <string name="error_empty_input">Veuillez entrer un nombre</string>
+    <string name="more">Plus</string>
+    <string name="less">Moins</string>
     <string name="leave">Quitter</string>
 </resources>

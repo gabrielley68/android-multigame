@@ -4,13 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".fragment.IpacGameFragment"
+    android:background="@color/white"
     >
 
     <TextView
+        android:id="@+id/main_number_try"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ipac Games"
-        android:textSize="30sp"/>
+        android:text="@string/number_try"
+        android:layout_marginTop="25dp"
+        android:textSize="30sp"
+        android:textColor="@color/darkerBlue"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <EditText
+        android:id="@+id/main_input_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:hint="@string/enter_number"
+        android:textColorHint="@color/darkerBlue"
+        android:inputType="number"
+        android:textSize="25sp"
+        android:maxLength="3"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <TextView
+        android:id="@+id/main_more_or_less"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/darkerBlue"
+        android:textSize="25sp"
+
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <Button
+        android:id="@+id/main_validate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="@string/validate"
+        android:textColor="@color/lighterBlue"
+        android:background="@color/darkerBlue"
+        android:textSize="25sp"
+        />
 
 </LinearLayout>

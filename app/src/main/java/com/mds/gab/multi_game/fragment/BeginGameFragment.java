@@ -44,6 +44,10 @@ public class BeginGameFragment extends Fragment {
                     DragnDropFragment newFragment = new DragnDropFragment();
                     FragmentUtils.addFragmentToFragment(BeginGameFragment.this, newFragment, R.id.fast_tap_container, gameName);
                 }
+                else if(gameName.equals(getString(R.string.ipac_game))){
+                    IpacGameFragment newFragment = new IpacGameFragment();
+                    FragmentUtils.addFragmentToFragment(BeginGameFragment.this, newFragment, R.id.fast_tap_container, gameName);
+                }
             }
         });
 
