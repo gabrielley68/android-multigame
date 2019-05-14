@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Multi-Game</string>
+    <string name="author">Par Gabriel LEY</string>
+    <string name="welcome">Bienvenue !</string>
+    <string name="name">Nom</string>
+    <string name="surname">Prénom</string>
+    <string name="age">Age</string>
+    <string name="localisation">Localisation</string>
+    <string name="players">Joueurs</string>
+    <string name="validate">Valider</string>
+    <string name="player_list">Liste des joueurs</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="begin">Commencer</string>
+    <string name="fast_tap">Fast Tap</string>
+    <string name="swipe">Swipe</string>
+    <string name="dragndrop">Drag\'n\'drop</string>
+    <string name="prepare">Préparez vous…</string>
+    <string name="time_left">Temps restant : </string>
+    <string name="score">Score : </string>
+    <string name="your_score">Votre score est de</string>
+    <string name="menu">Menu</string>
+    <string name="leave">Quitter</string>
+</resources>
