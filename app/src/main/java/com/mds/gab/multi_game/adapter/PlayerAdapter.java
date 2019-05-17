@@ -1,6 +1,5 @@
 package com.mds.gab.multi_game.adapter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mds.gab.multi_game.DisplayPlayersActivity;
 import com.mds.gab.multi_game.MainActivity;
+import com.mds.gab.multi_game.PlayerDetail;
 import com.mds.gab.multi_game.R;
 import com.mds.gab.multi_game.manager.PlayerManager;
 import com.mds.gab.multi_game.model.Player;
@@ -27,7 +26,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
 
     public PlayerAdapter(ArrayList<Player> players){
         this.players = players;
-
     }
 
     @NonNull
@@ -48,8 +46,17 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            PlayerManager.getInstance().setPlayer(player);
+            ActivityUtils.launchActivity((AppCompatActivity)v.getContext(), MainActivity.class, true, ActivityUtils.SLIDE_RIGHT);
+            }
+        });
+
+        viewHolder.container.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
                 PlayerManager.getInstance().setPlayer(player);
-                ActivityUtils.launchActivity((AppCompatActivity)v.getContext(), MainActivity.class, true, ActivityUtils.SLIDE_RIGHT);
+                ActivityUtils.launchActivity((AppCompatActivity)v.getContext(), PlayerDetail.class, false, ActivityUtils.SLIDE_RIGHT);
+                return true;
             }
         });
     }
@@ -59,11 +66,15 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
         return players.size();
     }
 
+    public void setItems(ArrayList<Player> players){
+        this.players = players;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView avatar;
-        private TextView name;
-        private TextView surname;
-        private LinearLayout container;
+        private final ImageView avatar;
+        private final TextView name;
+        private final TextView surname;
+        private final LinearLayout container;
 
 
         ViewHolder(View itemView){

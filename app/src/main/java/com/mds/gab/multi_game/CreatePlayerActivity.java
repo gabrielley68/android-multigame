@@ -25,10 +25,8 @@ import com.mds.gab.multi_game.model.Player;
 import com.mds.gab.multi_game.utils.ActivityUtils;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 
 import io.realm.Realm;
-import io.realm.RealmQuery;
 
 public class CreatePlayerActivity extends AppCompatActivity {
 
@@ -40,9 +38,6 @@ public class CreatePlayerActivity extends AppCompatActivity {
     private EditText ageEt;
     private EditText localisationEt;
     private ImageView avatarIv;
-    private Button playersB;
-    private Button validateB;
-    private ImageView localisationIv;
     private String avatarPath;
 
 
@@ -56,9 +51,9 @@ public class CreatePlayerActivity extends AppCompatActivity {
         ageEt = findViewById(R.id.create_player_age);
         localisationEt = findViewById(R.id.create_player_localisation);
         avatarIv = findViewById(R.id.create_player_avatar);
-        playersB = findViewById(R.id.create_player_players);
-        validateB = findViewById(R.id.create_player_validate);
-        localisationIv = findViewById(R.id.create_player_localisation_button);
+        Button playersB = findViewById(R.id.create_player_players);
+        Button validateB = findViewById(R.id.create_player_validate);
+        ImageView localisationIv = findViewById(R.id.create_player_localisation_button);
 
         /*
          * Changement d'avatar
@@ -146,9 +141,8 @@ public class CreatePlayerActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_PICK_PICTURE && resultCode == RESULT_OK){
-            Uri uri = data.getData();
-            Picasso.get().load(uri).into(avatarIv);
-            avatarPath = data.getData().getPath();
+            avatarPath = data.getData().toString();
+            Picasso.get().load(avatarPath).into(avatarIv);
         }
     }
 

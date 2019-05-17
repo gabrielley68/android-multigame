@@ -1,6 +1,5 @@
 package com.mds.gab.multi_game;
 
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -10,20 +9,15 @@ import android.os.Bundle;
 
 import com.mds.gab.multi_game.component.ViewPagerDisabling;
 import com.mds.gab.multi_game.fragment.BeginGameFragment;
-import com.mds.gab.multi_game.fragment.DragnDropFragment;
-import com.mds.gab.multi_game.fragment.IpacGameFragment;
 import com.mds.gab.multi_game.fragment.SettingsFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener, ViewPager.OnPageChangeListener {
 
     public ViewPagerDisabling viewPager;
-    private TabLayout tabLayout;
+    private final ArrayList<Fragment> fragments = new ArrayList<>();
     private int currentPage;
-    private ArrayList<Fragment> fragments = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setContentView(R.layout.activity_main);
 
         viewPager = findViewById(R.id.activity_main_view_page);
-        tabLayout = findViewById(R.id.activity_main_tab_layout);
+        TabLayout tabLayout = findViewById(R.id.activity_main_tab_layout);
 
         tabLayout.addOnTabSelectedListener(this);
         viewPager.addOnPageChangeListener(this);
@@ -74,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 return fragments.size();
             }
 
-            @Nullable
             @Override
             public CharSequence getPageTitle(int position) {
                 switch(position){
@@ -103,13 +96,21 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         for(Fragment fragment : getSupportFragmentManager().getFragments()){
             for(Fragment subFragment : fragment.getChildFragmentManager().getFragments()) {
                 if (subFragment.getTag() != null && subFragment.getTag().equals(getString(R.string.fast_tap))) {
-                    subFragment.getFragmentManager().popBackStack();
+                    if (subFragment.getFragmentManager() != null) {
+                        subFragment.getFragmentManager().popBackStack();
+                    }
                 } else if (subFragment.getTag() != null && subFragment.getTag().equals(getString(R.string.swipe))) {
-                    subFragment.getFragmentManager().popBackStack();
+                    if (subFragment.getFragmentManager() != null) {
+                        subFragment.getFragmentManager().popBackStack();
+                    }
                 } else if (subFragment.getTag() != null && subFragment.getTag().equals(getString(R.string.dragndrop))){
-                    subFragment.getFragmentManager().popBackStack();
+                    if (subFragment.getFragmentManager() != null) {
+                        subFragment.getFragmentManager().popBackStack();
+                    }
                 } else if (subFragment.getTag() != null && subFragment.getTag().equals(getString(R.string.ipac_game))){
-                    subFragment.getFragmentManager().popBackStack();
+                    if (subFragment.getFragmentManager() != null) {
+                        subFragment.getFragmentManager().popBackStack();
+                    }
                 }
             }
         }

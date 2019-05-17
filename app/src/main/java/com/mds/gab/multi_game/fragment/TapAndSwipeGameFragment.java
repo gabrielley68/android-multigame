@@ -1,11 +1,9 @@
 package com.mds.gab.multi_game.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mds.gab.multi_game.MainActivity;
 import com.mds.gab.multi_game.R;
@@ -23,27 +20,19 @@ import com.mds.gab.multi_game.ScoreActivity;
 import com.mds.gab.multi_game.utils.ActivityUtils;
 import com.mds.gab.multi_game.utils.TimerUtils;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class TapAndSwipeGameFragment extends Fragment {
 
-    private static final int TIME_BEFORE_FIRST_EXECUTION = 1000;
-    private static final int DELAY_BETWEEN_TRIGGER = 1000;
 
-    int timeLeft = 20;
-    int score = 0;
-    double random = Math.random();
+    private int score = 0;
+    private double random = Math.random();
     private float x1,x2,y1,y2;
-    static final int MIN_DISTANCE = 100;
-    static final int MAX_DISTANCE = 1000;
-    TextView timerTv;
-    TextView textTv;
-    TextView scoreTv;
-    LinearLayout containerLl;
-    TimerUtils timerUtils;
+    private static final int MIN_DISTANCE = 100;
+    private static final int MAX_DISTANCE = 1000;
+    private TextView textTv;
+    private TextView scoreTv;
+    private TimerUtils timerUtils;
 
-    Context context;
+    private Context context;
 
     @Override
     public void onAttach(Context context) {
@@ -57,14 +46,14 @@ public class TapAndSwipeGameFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_fast_tap_game, container, false);
 
-        final String name = getArguments().getString("name");
+        final String name = getArguments() != null ? getArguments().getString("name") : null;
 
-        timerTv = view.findViewById(R.id.fast_tap_game_timer);
+        TextView timerTv = view.findViewById(R.id.fast_tap_game_timer);
         textTv = view.findViewById(R.id.fast_tap_game_text);
         scoreTv = view.findViewById(R.id.fast_tap_game_score);
-        containerLl = view.findViewById(R.id.fast_tap_game_container);
+        LinearLayout containerLl = view.findViewById(R.id.fast_tap_game_container);
 
-        if(name.equals(getString(R.string.fast_tap))) {
+        if(name != null && name.equals(getString(R.string.fast_tap))) {
             nextTap();
 
             containerLl.setOnLongClickListener(new View.OnLongClickListener() {

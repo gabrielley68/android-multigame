@@ -7,26 +7,26 @@ import android.support.v7.widget.RecyclerView;
 
 import com.mds.gab.multi_game.adapter.PlayerAdapter;
 import com.mds.gab.multi_game.model.Player;
-import com.mds.gab.multi_game.utils.ActivityUtils;
 
 import java.util.ArrayList;
 
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
 import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 public class DisplayPlayersActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    private PlayerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_players);
-        recyclerView = findViewById(R.id.player_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.player_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PlayerAdapter adapter = new PlayerAdapter(getAllPlayers());
+        adapter = new PlayerAdapter(getAllPlayers());
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override
@@ -36,9 +36,16 @@ public class DisplayPlayersActivity extends AppCompatActivity {
     }
 
     private ArrayList<Player> getAllPlayers(){
-        Realm mRealmInstance = Realm.getDefaultInstance();
-        RealmQuery query = mRealmInstance.where(Player.class);
-        ArrayList<Player> players = new ArrayList<Player>(query.findAll());
-        return players;
+        final Realm mRealmInstance = Realm.getDefaultInstance();
+        RealmQuery<Player> query = mRealmInstance.where(Player.class);
+        RealmResults<Player> players = query.findAll();
+        players.addChangeListener(new RealmChangeListener<RealmResults<Player>>() {
+            @Override
+            public void onChange(RealmResults<Player> players) {
+                adapter.setItems((ArrayList<Player>)mRealmInstance.copyFromRealm(players));
+                adapter.notifyDataSetChanged();
+            }
+        });
+        return new ArrayList<>(players);
     }
 }

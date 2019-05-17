@@ -1,5 +1,6 @@
 package com.mds.gab.multi_game.model;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -11,7 +12,7 @@ public class Player extends RealmObject {
     private int age;
     private String location;
     private String picture;
-    private int score;
+    private RealmList<Score> score;
 
     public Player(){
 
@@ -23,7 +24,7 @@ public class Player extends RealmObject {
         setAge(Integer.parseInt(age));
         setLocation(localisation);
         setPicture(picture);
-        score = 0;
+        score = new RealmList<>();
     }
 
     public String getName() {
@@ -66,9 +67,15 @@ public class Player extends RealmObject {
         this.picture = picture;
     }
 
-    public int getScore(){return score;}
+    public RealmList<Score> getScore() {
+        return score;
+    }
 
-    public void setScore(int score){this.score = score;}
+    public void setScore(RealmList<Score> score) {
+        this.score = score;
+    }
 
-    public void addScore(int score){this.score += score;}
+    public void addScore(Score score){
+        this.score.add(score);
+    }
 }

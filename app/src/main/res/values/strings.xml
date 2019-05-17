@@ -15,7 +15,6 @@
     <string name="swipe">Swipe</string>
     <string name="dragndrop">Drag\'n\'drop</string>
     <string name="prepare">Préparez vous…</string>
-    <string name="time_left">Temps restant : </string>
     <string name="score">Score : </string>
     <string name="your_score">Votre score est de</string>
     <string name="menu">Menu</string>
@@ -27,4 +26,10 @@
     <string name="more">Plus</string>
     <string name="less">Moins</string>
     <string name="leave">Quitter</string>
+    <string name="settings">Paramètres</string>
+    <string name="deconnexion">Déconnexion</string>
+    <string name="change_player">Changer de joueur</string>
+    <string name="profil">Profil</string>
+    <string name="modify_player">Modifier le joueur</string>
+    <string name="delete_player">Supprimer le joueur</string>
 </resources>

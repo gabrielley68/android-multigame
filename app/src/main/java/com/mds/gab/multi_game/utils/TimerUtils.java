@@ -8,11 +8,9 @@ import java.util.TimerTask;
 
 public abstract class TimerUtils {
 
-    int TIME_BEFORE_FIRST_EXECUTION = 1000;
-    int DELAY_BETWEEN_TRIGGER = 1000;
-    int timeLeft;
-    TextView timerTv;
-    TimerTask timerTask;
+    private int timeLeft;
+    private final TextView timerTv;
+    private TimerTask timerTask;
 
     public TimerUtils(TextView timerTv, int duration){
         this.timerTv = timerTv;
@@ -32,7 +30,7 @@ public abstract class TimerUtils {
                         if(timeLeft == 0){
                             end();
                         } else {
-                            timerTv.setText("Temps restant : " + Integer.toString(timeLeft) + "s");
+                            timerTv.setText("Temps restant : " + timeLeft + "s");
                             timeLeft--;
                         }
                     }
@@ -40,6 +38,8 @@ public abstract class TimerUtils {
             }
         };
 
+        int TIME_BEFORE_FIRST_EXECUTION = 1000;
+        int DELAY_BETWEEN_TRIGGER = 1000;
         timer.schedule(timerTask, TIME_BEFORE_FIRST_EXECUTION, DELAY_BETWEEN_TRIGGER);
 
     }
@@ -48,5 +48,5 @@ public abstract class TimerUtils {
         timerTask.cancel();
     }
 
-    public abstract void end();
+    protected abstract void end();
 }

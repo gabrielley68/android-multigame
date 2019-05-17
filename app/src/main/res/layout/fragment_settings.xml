@@ -4,13 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".fragment.SettingsFragment"
     >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="30sp"/>
+        android:text="@string/settings"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/score_recycler_view"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_margin="40dp"
+            android:layout_weight="50"
+            />
+
+        <Button
+            android:id="@+id/settings_deconnexion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/deconnexion"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/settings_change_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/change_player"
+            android:layout_weight="1"/>
 
 </LinearLayout>

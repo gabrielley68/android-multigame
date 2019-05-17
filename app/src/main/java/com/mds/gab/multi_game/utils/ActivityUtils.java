@@ -7,7 +7,7 @@ import com.mds.gab.multi_game.R;
 
 public class ActivityUtils {
 
-    public final static int FADE = 0;
+    private final static int FADE = 0;
     public final static int SLIDE_RIGHT = 1;
 
     public static void launchActivity(AppCompatActivity activity, Class cls) {
@@ -23,7 +23,7 @@ public class ActivityUtils {
         launchActivity(activity, intent, finish, animation);
     }
 
-    public static void launchActivity(AppCompatActivity activity, Intent intent, boolean finish, int animation) {
+    private static void launchActivity(AppCompatActivity activity, Intent intent, boolean finish, int animation) {
         activity.startActivity(intent);
 
         switch(animation){

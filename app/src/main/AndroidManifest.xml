@@ -23,7 +23,8 @@
         <activity android:name=".CreatePlayerActivity" />
         <activity android:name=".DisplayPlayersActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ScoreActivity"></activity>
+        <activity android:name=".ScoreActivity" />
+        <activity android:name=".PlayerDetail"/>
     </application>
 
 </manifest>

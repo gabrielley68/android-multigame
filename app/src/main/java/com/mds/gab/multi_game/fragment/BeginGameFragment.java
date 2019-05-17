@@ -15,8 +15,6 @@ import com.mds.gab.multi_game.utils.FragmentUtils;
 
 public class BeginGameFragment extends Fragment {
 
-    private Button button;
-    private TextView title;
     private String gameName;
 
     @Nullable
@@ -24,12 +22,12 @@ public class BeginGameFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_begin_game, container, false);
 
-        gameName = getArguments().getString("name");
+        gameName = getArguments() != null ? getArguments().getString("name") : null;
 
-        title = view.findViewById(R.id.begin_title);
+        TextView title = view.findViewById(R.id.begin_title);
         title.setText(gameName);
 
-        button = view.findViewById(R.id.begin_button);
+        Button button = view.findViewById(R.id.begin_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

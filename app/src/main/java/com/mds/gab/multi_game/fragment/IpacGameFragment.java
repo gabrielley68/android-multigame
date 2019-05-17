@@ -30,10 +30,9 @@ public class IpacGameFragment extends Fragment {
     private EditText numberEd;
     private TextView numberOfTryTv;
     private TextView moreOrLessTv;
-    private Button validateButton;
     private int numberToFind;
     private int numberOfTry = NUMBER_OF_TRY;
-    Context context;
+    private Context context;
 
     @Override
     public void onAttach(Context context) {
@@ -49,7 +48,7 @@ public class IpacGameFragment extends Fragment {
         numberOfTryTv = view.findViewById(R.id.main_number_try);
         numberEd = view.findViewById(R.id.main_input_number);
         moreOrLessTv = view.findViewById(R.id.main_more_or_less);
-        validateButton = view.findViewById(R.id.main_validate);
+        Button validateButton = view.findViewById(R.id.main_validate);
 
         numberOfTryTv.setText(getResources().getString(R.string.number_try, numberOfTry));
         numberToFind = (int)(Math.random() * 100);

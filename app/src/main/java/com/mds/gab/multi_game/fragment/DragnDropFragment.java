@@ -1,5 +1,6 @@
 package com.mds.gab.multi_game.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
@@ -17,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -41,17 +41,10 @@ public class DragnDropFragment extends Fragment {
 
     private ImageView draggableIv;
     private TextView scoreTextView;
-    private TextView timerTextView;
 
-    private View redView;
-    private View greenView;
-    private View purpleView;
-    private View blackView;
-    private View blueView;
-    private View grayView;
     private RelativeLayout blankView;
 
-    Context context;
+    private Context context;
 
     @Override
     public void onAttach(Context context) {
@@ -59,15 +52,16 @@ public class DragnDropFragment extends Fragment {
         this.context = context;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_drag_n_drop, container, false);
 
         scoreTextView = view.findViewById(R.id.score_dragndrop);
-        timerTextView = view.findViewById(R.id.timer_dragndrop);
+        TextView timerTextView = view.findViewById(R.id.timer_dragndrop);
 
 
-        redView = view.findViewById(R.id.red);
+        View redView = view.findViewById(R.id.red);
         redView.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -78,7 +72,7 @@ public class DragnDropFragment extends Fragment {
             }
         });
 
-        greenView = view.findViewById(R.id.green);
+        View greenView = view.findViewById(R.id.green);
         greenView.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -89,7 +83,7 @@ public class DragnDropFragment extends Fragment {
             }
         });
 
-        purpleView = view.findViewById(R.id.purple);
+        View purpleView = view.findViewById(R.id.purple);
         purpleView.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -100,7 +94,7 @@ public class DragnDropFragment extends Fragment {
             }
         });
 
-        blackView = view.findViewById(R.id.black);
+        View blackView = view.findViewById(R.id.black);
         blackView.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -111,7 +105,7 @@ public class DragnDropFragment extends Fragment {
             }
         });
 
-        blueView = view.findViewById(R.id.blue);
+        View blueView = view.findViewById(R.id.blue);
         blueView.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -122,7 +116,7 @@ public class DragnDropFragment extends Fragment {
             }
         });
 
-        grayView = view.findViewById(R.id.gray);
+        View grayView = view.findViewById(R.id.gray);
         grayView.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -165,7 +159,7 @@ public class DragnDropFragment extends Fragment {
             }
         });
 
-        timerUtils = new TimerUtils(timerTextView, 20) {
+        timerUtils = new TimerUtils(timerTextView, 3) {
             @Override
             public void end() {
                 Intent intent = new Intent(context, ScoreActivity.class);
